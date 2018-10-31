@@ -10,3 +10,5 @@ using the [base-notebook](https://github.com/jupyter/docker-stacks/tree/master/b
 
     docker build -t jrnbk .
     docker run -p 8888:8888 -t jrnbk
+
+The [prebuilt docker image](https://hub.docker.com/r/gorenje/jupyter-ruby-notebook/) is being used here.
