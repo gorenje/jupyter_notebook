@@ -1,17 +1,11 @@
-# Taken from https://github.com/SciRuby/sciruby-notebooks
-FROM andrewosh/binder-base
-
-MAINTAINER Kozo Nishida <knishida@riken.jp>
+FROM jupyter/base-notebook
 
 USER root
+SHELL ["/bin/bash", "--login", "-c"]
 
-# Add ecell4 dependencies
-RUN apt-get update
-RUN apt-get install -y build-essential ruby ruby-dev libzmq3 libzmq3-dev gnuplot-nox libgsl0-dev libtool autoconf automake zlib1g-dev libsqlite3-dev libmagick++-dev imagemagick libatlas-base-dev && apt-get clean
-RUN ln -s /usr/bin/libtoolize /usr/bin/libtool # See https://github.com/zeromq/libzmq/issues/1385
+RUN apt-get --quiet --yes update
+RUN apt-get install -y build-essential ruby ruby-dev libmagick++-dev imagemagick libgsl0-dev libzmq3-dev libczmq-dev libffi-dev gnuplot
 
-RUN gem update --no-document --system && gem install --no-document sciruby-full
+RUN gem install cztop iruby pry rubyvis gnuplot rest-client mechanize geokit addressable sinatra
 
-USER main
-
-RUN iruby register
+RUN iruby register --force
