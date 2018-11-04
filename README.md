@@ -12,3 +12,11 @@ using the [base-notebook](https://github.com/jupyter/docker-stacks/tree/master/b
     docker run -p 8888:8888 -t jrnbk
 
 The [prebuilt docker image](https://hub.docker.com/r/gorenje/jupyter-ruby-notebook/) is being used here.
+
+For testing purposes, some shortcuts
+
+    # stop the running image
+    docker kill `docker ps | grep jrnbk | awk '// { print $1 }'`
+
+    # enter the image with a bash shell
+    docker exec -it `docker ps | grep jrnbk | awk '// { print $1 }'` /bin/bash

@@ -9,5 +9,3 @@ RUN apt-get install -y build-essential ruby ruby-dev libmagick++-dev imagemagick
 RUN gem install cztop pry rubyvis gnuplot rest-client mechanize geokit addressable sinatra awesome_print iruby
 
 RUN iruby register --force
-
-COPY fubar.rb /home/jovyan
