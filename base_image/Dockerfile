@@ -1,11 +1,32 @@
+# This creates a jupyter image with ruby support
 FROM jupyter/base-notebook
 
 USER root
 SHELL ["/bin/bash", "--login", "-c"]
 
-RUN apt-get --quiet --yes update
-RUN apt-get install -y build-essential ruby ruby-dev libmagick++-dev imagemagick libgsl0-dev libzmq3-dev libczmq-dev libffi-dev gnuplot
+RUN apt-get --quiet --yes update && apt-get install -yqq \
+    build-essential \
+    gnuplot \
+    imagemagick \
+    libczmq-dev \
+    libffi-dev \
+    libgsl0-dev \
+    libmagick++-dev \
+    libzmq3-dev \
+    ruby \
+    ruby-dev
 
-RUN gem install cztop pry rubyvis gnuplot rest-client mechanize geokit addressable sinatra awesome_print iruby
+RUN gem install -q \
+    addressable \
+    awesome_print \
+    iruby \
+    cztop \
+    geokit \
+    gnuplot \
+    mechanize \
+    pry \
+    rest-client \
+    rubyvis \
+    sinatra
 
 RUN iruby register --force
